@@ -1,6 +1,8 @@
 package ce
 
-import ce.practice.SourceCode
+import java.io.File
+
+import ce.practice.{DirectoryScanner, SourceCode}
 
 /**
   * @author caie
@@ -10,7 +12,18 @@ object MainApp extends App {
   if (args.length < 1) {
     println("please input path")
   } else {
-    val sourceCode = SourceCode.fromFile(args(0))
-    println(s"name: ${sourceCode.name}     lines: ${sourceCode.count}")
+    val path = args(0)
+    val file = new File(path)
+    if (file.isFile) {
+      // file
+      val sourceCode = SourceCode.fromFile(path)
+      println(s"name: ${sourceCode.name}     lines: ${sourceCode.count}")
+    } else {
+      // directory, to Scan
+      val directoryScanner = new DirectoryScanner
+      directoryScanner.scan(path).foreach {
+        case (fileType, count) => println(s"fileType: $fileType, count: $count")
+      }
+    }
   }
 }
