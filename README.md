@@ -17,15 +17,19 @@ Build a code static analyzation tool with scala. and learn scala features during
 # 安装与执行 #
 
 **下载工程**
+
 git clone git@github.com:whitewallpaper/CodeAnaylzer.git
 
 **进入SBT console**
+
 sbt
 
 **package**
+
 sbt assembly
 
 **执行， jar包后的参数 为 执行路径**
+
 java -jar target/scala-2.11/CodeAnalyzer-assembly-0.0.1.jar ./
 
 **执行正确后的控制台响应**
