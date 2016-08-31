@@ -1,5 +1,5 @@
 # CodeAnalyzerTutorial
-I will build a code static analyzation tool with scala. and learn scala features during the project.
+Build a code static analyzation tool with scala. and learn scala features during the project.
 
 # 功能列表 #
 
