@@ -8,16 +8,18 @@ import org.scalatest.{FunSpec, ShouldMatchers}
   * @author caie
   * @since 16/8/30
   */
-class DirectoryScannerSpec extends FunSpec with ShouldMatchers {
+class CodebaseAnalyzerSpec extends FunSpec with ShouldMatchers {
 
-  describe("Directory Scanner") {
+  describe("CodebaseAnalyzer") {
     // 递归读取指定目录, 获取文件个数信息
     it("it can read specified directory recursion and get file count") {
       val path = "/Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/src/test/resources"
-      val direct = new DirectoryScanner
-      val scanResult = direct.scan(path)
-      scanResult("txt") shouldBe 2
-      scanResult("properties") shouldBe 2
+      val direct = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
+      val scanResult = direct.scanFromPath(path)
+
+      scanResult.size shouldBe 3
+      scanResult should contain theSameElementsAs Map("properties" -> 2, "Empty-File-Type" -> 1, "txt" -> 2)
+
     }
 
     /**

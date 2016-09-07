@@ -6,11 +6,11 @@ package ce.practice.utils
   */
 object FileUtils {
 
-  type FileType = String
+  type Path = String
 
   val emptyType = "Empty-File-Type"
 
-  def extractFileName(fileName: String): String = {
+  def extractFileName(fileName: Path): String = {
     if (fileName.contains(".")) {
       fileName.split("\\.").last
     } else {

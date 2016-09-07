@@ -2,7 +2,7 @@ package ce
 
 import java.io.File
 
-import ce.practice.{DirectoryScanner, SourceCode}
+import ce.practice.{CodebaseAnalyzer, DirectoryScanner, SourceCodeAnalyzer}
 
 /**
   * @author caie
@@ -16,12 +16,12 @@ object MainApp extends App {
     val file = new File(path)
     if (file.isFile) {
       // file
-      val sourceCode = SourceCode.fromFile(path)
+      val sourceCode = new SourceCodeAnalyzer {}.fromFile(path)
       println(s"name: ${sourceCode.name}     lines: ${sourceCode.count}")
     } else {
       // directory, to Scan
-      val directoryScanner = new DirectoryScanner
-      directoryScanner.scan(path).foreach {
+      val directoryScanner = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
+      directoryScanner.scanFromPath(path).foreach {
         case (fileType, count) => println(s"fileType: $fileType, count: $count")
       }
     }
