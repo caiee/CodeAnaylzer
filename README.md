@@ -9,7 +9,6 @@ Build a code static analyzation tool with scala. and learn scala features during
 - [x] 分析一个文件有多少行代码
 - [x] 分析平均代码行数
 - [x] 列出行数最多的5个文件
-- [x] 列出行数最多的5个文件
 - [x] 把结果输出到文件
 - [ ] 分析平均一个文件有多少变量
 - [ ] 分析平均一个文件有多少可变变量
