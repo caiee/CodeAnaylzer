@@ -3,15 +3,17 @@ Build a code static analyzation tool with scala. and learn scala features during
 
 # 功能列表 #
 
-* √ 读取指定文件
-* √ 递归读取指定目录， 获取文件个数信息
-* √ 不同后缀名的文件分别有多少个
-* √ 分析一个文件有多少行代码
-* 分析平均代码行数
-* 分析平均一个文件有多少行数
+* - [x] 读取指定文件
+* - [x] 递归读取指定目录， 获取文件个数信息
+* - [x] 不同后缀名的文件分别有多少个
+* - [x] 分析一个文件有多少行代码
+* - [x] 分析平均代码行数
+* - [x] 列出行数最多的5个文件
+* - [x] 列出行数最多的5个文件
+* - [x] 把结果输出到文件
 * 分析平均一个文件有多少变量
 * 分析平均一个文件有多少可变变量
-* 分析最长文件有多少行
+* - [x] 分析最长文件有多少行
 * 分析一个文件有多少空行
 
 # 安装与执行 #
@@ -20,11 +22,7 @@ Build a code static analyzation tool with scala. and learn scala features during
 
 git clone git@github.com:whitewallpaper/CodeAnaylzer.git
 
-**进入SBT console**
-
-sbt
-
-**package**
+**打包**
 
 sbt assembly
 
