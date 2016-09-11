@@ -2,6 +2,7 @@ package ce
 
 import java.io.File
 
+import ce.practice.utils.FileUtils
 import ce.practice.{CodebaseAnalyzer, DirectoryScanner, SourceCodeAnalyzer}
 
 /**
@@ -14,16 +15,32 @@ object MainApp extends App {
   } else {
     val path = args(0)
     val file = new File(path)
+    val analyzer = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
     if (file.isFile) {
       // file
-      val sourceCode = new SourceCodeAnalyzer {}.fromFile(path)
+      val sourceCode = analyzer.getSourceCode(path)
       println(s"name: ${sourceCode.name}     lines: ${sourceCode.count}")
     } else {
       // directory, to Scan
-      val directoryScanner = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
-      directoryScanner.scanFromPath(path).foreach {
+      analyzer.scanFromPath(path).foreach {
         case (fileType, count) => println(s"fileType: $fileType, count: $count")
       }
+
+      println()
+
+      println(" 下面是行数最多的五个文件: ")
+
+
+      val content = analyzer.getTopFiveLongestFile(path)
+        .map(codeInfo => "file path: " + codeInfo.path + ", total lines: " + codeInfo.count)
+        .mkString("\n")
+
+      println(content)
+
+      val destPath: String = System.getProperty("user.dir") + "/result.txt"
+      FileUtils.writeFile(destPath, content)
+      print(s"结果已经输出到 $destPath 路径中, 可以在该文件中查看.")
+
     }
   }
 }

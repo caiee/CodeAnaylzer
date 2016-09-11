@@ -110,3 +110,4 @@ testOptions in Test ++= Seq(
   Tests.Argument(TestFrameworks.ScalaTest,"-o"),
   Tests.Argument(TestFrameworks.ScalaTest,"-l","FunctionTest")
 )
+1

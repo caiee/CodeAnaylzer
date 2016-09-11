@@ -8,16 +8,27 @@ import ce.practice.utils.FileUtils.Path
   */
 trait DirectoryScanner {
 
+  val ignoreFolders = List[String](
+    ".git",
+    "target",
+    ".idea"
+  )
+
   def scan(path: Path): Seq[Path] = {
     import java.io._
     val file = new File(path)
     val files = file.listFiles
     files.foldLeft(Vector[Path]()) {
       (acc, f) => {
-        if (f.isFile) {
-          acc :+ f.getAbsolutePath
+        if (ignoreFolders.contains(f.getName)) {
+          // ignore useless directory
+          acc
         } else {
-          acc ++ scan(f.getAbsolutePath)
+          if (f.isFile) {
+            acc :+ f.getAbsolutePath
+          } else {
+            acc ++ scan(f.getAbsolutePath)
+          }
         }
       }
     }

@@ -109,3 +109,4 @@ testOptions in Test ++= Seq(
   Tests.Argument(TestFrameworks.ScalaTest,"-u","target/unit-test-reports"),
   Tests.Argument(TestFrameworks.ScalaTest,"-o"),
   Tests.Argument(TestFrameworks.ScalaTest,"-l","FunctionTest")
+)
