@@ -1,7 +1,7 @@
-package ce.practice
+package ce.codeanalyzer
 
-import ce.practice.utils.FileUtils
-import ce.practice.utils.FileUtils.Path
+import ce.codeanalyzer.utils.FileUtils
+import ce.codeanalyzer.utils.FileUtils.Path
 
 /**
   * @author caie

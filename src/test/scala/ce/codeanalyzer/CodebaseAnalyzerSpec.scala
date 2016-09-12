@@ -1,4 +1,4 @@
-package ce.practice
+package ce.codeanalyzer
 
 import java.io.File
 

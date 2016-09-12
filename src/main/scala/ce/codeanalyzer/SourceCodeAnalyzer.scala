@@ -1,6 +1,6 @@
-package ce.practice
+package ce.codeanalyzer
 
-import ce.practice.utils.FileUtils.Path
+import ce.codeanalyzer.utils.FileUtils.Path
 
 import scala.io.Source
 

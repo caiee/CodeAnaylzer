@@ -2,8 +2,8 @@ package ce
 
 import java.io.File
 
-import ce.practice.utils.FileUtils
-import ce.practice.{CodebaseAnalyzer, DirectoryScanner, SourceCodeAnalyzer}
+import ce.codeanalyzer.utils.FileUtils
+import ce.codeanalyzer.{CodebaseAnalyzer, DirectoryScanner, SourceCodeAnalyzer}
 
 /**
   * @author caie

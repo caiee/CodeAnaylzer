@@ -1,4 +1,4 @@
-package ce.practice.utils
+package ce.codeanalyzer.utils
 
 import org.scalatest.{FunSpec, ShouldMatchers}
 
