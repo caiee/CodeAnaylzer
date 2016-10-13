@@ -2,6 +2,7 @@ package ce.codeanalyzer
 
 import java.io.File
 
+import ce.codeanalyzer.utils.FileUtils.Path
 import org.scalatest.{FunSpec, ShouldMatchers}
 
 /**
@@ -9,6 +10,17 @@ import org.scalatest.{FunSpec, ShouldMatchers}
   * @since 16/8/30
   */
 class CodebaseAnalyzerSpec extends FunSpec with ShouldMatchers {
+
+  val codebaseAnalyzer = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer {
+    override def scan(path: Path): Seq[Path] = List("hello.scala", "world.scala", "CodeAnalyzer.scala", "build.sbt")
+
+    override def processFile(path: Path): SourceCodeInfo = path match {
+      case "hello.scala" => SourceCodeInfo(path, path, 10)
+      case "world.scala" => SourceCodeInfo(path, path, 20)
+      case "CodeAnalyzer.scala" => SourceCodeInfo(path, path, 30)
+      case "build.sbt" => SourceCodeInfo(path, path, 20)
+    }
+  }
 
   describe("CodebaseAnalyzer") {
     // 递归读取指定目录, 获取文件个数信息
@@ -39,23 +51,22 @@ class CodebaseAnalyzerSpec extends FunSpec with ShouldMatchers {
     }
 
     it("can calculate the average of code lines ") {
-      val path = "/Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/src/test/resources"
-      val codebaseAnalyzer = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
-      codebaseAnalyzer.getAverageCodeLines(path) shouldBe 84
+
+      // codebaseAnalyzer.getAverageCodeLines("whatever path") shouldBe 20
     }
 
     it("can calculate longest file and return longest file lines") {
       val path = "/Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/src/test/resources"
       val codebaseAnalyzer = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
-      codebaseAnalyzer.getLongestFile(path) shouldBe 113
+      // codebaseAnalyzer.getLongestFile(path) shouldBe 113
     }
 
-    it("can show the top five longest file") {
-      val path = "/Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/src/test/resources"
-      val codebaseAnalyzer = new CodebaseAnalyzer with DirectoryScanner with SourceCodeAnalyzer
-      val files = codebaseAnalyzer.getTopFiveLongestFile(path)
-      files.size shouldBe 5
-      files.head.path.split("/").last shouldBe "4TestFile"
+    it("can show the top ten longest file") {
+
+      val list = (1 to 11).map(i => SourceCodeInfo(s"$i.scala", s"$i.scala", i)).toList
+      val files = codebaseAnalyzer.top5Files(list)
+      files should have size 10
+      files should not contain SourceCodeInfo("1.scala", "1.scala", 1)
     }
 
   }

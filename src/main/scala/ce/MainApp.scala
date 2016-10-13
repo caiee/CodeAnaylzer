@@ -19,7 +19,7 @@ object MainApp extends App {
     if (file.isFile) {
       // file
       val sourceCode = analyzer.getSourceCode(path)
-      println(s"name: ${sourceCode.name}     lines: ${sourceCode.count}")
+      println(s"name: ${sourceCode.fileName}     lines: ${sourceCode.count}")
     } else {
       // directory, to Scan
       analyzer.scanFromPath(path).foreach {
@@ -31,9 +31,9 @@ object MainApp extends App {
       println(" 下面是行数最多的五个文件: ")
 
 
-      val content = analyzer.getTopFiveLongestFile(path)
+      val content = "nihao"/*analyzer.getTopFiveLongestFile(path)
         .map(codeInfo => "file path: " + codeInfo.path + ", total lines: " + codeInfo.count)
-        .mkString("\n")
+        .mkString("\n")*/
 
       println(content)
 

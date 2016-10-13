@@ -1,0 +1,5 @@
+file path: /Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/./LICENSE, total lines: 201
+file path: /Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/./src/test/resources/4TestFile, total lines: 113
+file path: /Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/./build.sbt, total lines: 112
+file path: /Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/./src/test/resources/scan/4TestFile3.txt, total lines: 112
+file path: /Users/zhpooer/ce-workspace/workspace/my-repo/scala/CodeAnalyzer/./src/test/resources/scan/4TestFile4.txt, total lines: 112
